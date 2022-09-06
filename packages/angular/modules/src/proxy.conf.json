@@ -1,0 +1,14 @@
+{
+  "/ng-standalone": {
+    "target": "http://localhost:4201",
+    "secure": false
+  },
+  "/react": {
+    "target": "http://localhost:4202",
+    "secure": false
+  },
+  "/vue": {
+    "target": "http://localhost:4203",
+    "secure": false
+  }
+}

@@ -1,0 +1,8 @@
+<div class="field-checkbox" *ngIf="currentTodo">
+  <p-checkbox
+    inputId="binary"
+    [value]="currentTodo"
+    (onChange)="emitTodo($event)"
+  ></p-checkbox>
+  <label for="binary">delay 3 seconds</label>
+</div>

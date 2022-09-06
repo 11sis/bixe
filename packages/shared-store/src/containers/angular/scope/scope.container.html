@@ -1,0 +1,22 @@
+<div class="scope-content-area">
+
+	<bixe-scope-header [scope]="scope"></bixe-scope-header>
+
+  <bixe-todo-form
+    [scope]="scope"
+    [state]="state"
+    [delayStatus]="delayMessage"
+    (handleChange)="handleChange($event)"
+    (updateDelay)="updateDelay($event)"
+    (handleSubmit)="handleSubmit($event)"
+  ></bixe-todo-form>
+
+	<div class="list-container">
+
+		<bixe-todos [state]="state" (dispatch)="store.dispatch($event)"></bixe-todos>
+
+    <bixe-states-slider [state]="state" [rootState]="rootState"></bixe-states-slider>
+
+	</div>
+
+</div>

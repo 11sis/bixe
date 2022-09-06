@@ -1,0 +1,22 @@
+
+.state-slider {
+  margin: 9em 0 0 0;
+}
+
+.state-display {
+  width: 100%;
+  $stateDisplayHeaderBgColor: #f8f9fa;
+  .state-display--header, .root-state-display--header {
+    background-color: $stateDisplayHeaderBgColor;
+    padding: 1em 0 1em 0;
+    text-align: center;
+    border-bottom: 1px solid darken($stateDisplayHeaderBgColor, 10%);
+  }
+  .state-display--header {
+    border-right: 1px dotted darken($stateDisplayHeaderBgColor, 10%);
+  }
+  .state-display--body, .root-state-display--body {
+    background-color: white;
+    overflow: auto;;
+  }
+}

@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Futura';
+  src: url('assets/fonts/futura-medium/Futura_Medium.ttf') format('truetype'),
+    url('assets/fonts/futura-medium/Futura_Std_Medium_Condensed.ttf') format('truetype'),
+    url('assets/fonts/futura-medium/Futura_Std_Medium.ttf') format('truetype'),
+    url('assets/fonts/futura-medium/Futura_TOT_Medium_Condensed.ttf') format('truetype'),
+    url('assets/fonts/futura-medium/Futura_URW_Medium.ttf') format('truetype');
+}
+
+h1 {
+  padding: 0 0 0 0 !important;
+  margin: 0 0 0 0 !important;
+}
+
+html,
+body {
+  margin: 0 0 0 0 !important;
+  font-family: 'Futura', Verdana, sans-serif;
+}
+
+// form {
+//   white-space: nowrap;
+// }
+
+// form input[type="text"] {
+//   width: 200px;
+// }
+
+.list-container {
+  // background-color: #2A1E11; //darken(#f8f9fa, 10%);
+  height: 100%;
+  margin-top: 1em;
+  border: 1px solid #cacbcc;
+  $persent: 45%;
+  background: repeating-linear-gradient(
+    -45deg,
+    lighten(#606dbc, $persent),
+    lighten(#606dbc, $persent) 10px,
+    lighten(#465298, $persent) 10px,
+    lighten(#465298, $persent) 20px
+  );
+}
+
+.list {
+  /* margin: 1em 1em 1em 1em; */
+  line-height: 1em;
+}
+
+.list input[type="checkbox"] {
+  margin-right: 1em;
+}
+
+.list input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
+.list-item {
+  padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+.list-item.complete {
+  background-color: #def7de;
+}
+
+.list-item.incomplete {
+  background-color: #f8e4e4;
+}
+
+.list-item .button {
+  float: right;
+  border-radius: 5px;
+  max-height: 5px;
+  line-height: 0;
+  margin: -2px 0.75em 2px 0.75em;
+  padding: 8px 5px 10px 5px;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.list-item .button:hover {
+  cursor: pointer;
+  background-color: #d5e1ee;
+}
+
+.list-title {
+  line-height: 1em;
+  margin: 0 0 0 0;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  background-color: #d5e1ee;
+}
+
+.list-title div {
+  font-size: 0.9em;
+  display: inline-block;
+}
+
+.list-title div:nth-child(2) {
+  float: right;
+  margin-top: 1em;
+}
+
+
+
+
+.scope {
+  text-transform: capitalize;
+}
+
+.sub-header {
+  background-color: rgb(221, 221, 224);
+  margin: -1em -1em 2em -1em;
+  padding: 1em 1em 1em 1em;
+}
+
+.p-float-inline {
+  display: inline-block !important;
+  margin: 0 1em 0 0;
+}
+
+.field-checkbox{
+  display: inline-block;
+  margin-left: 1em;
+  p-checkbox {
+    margin-right: .5em;
+  }
+}
+
+.delay-count {
+  float: right;
+}

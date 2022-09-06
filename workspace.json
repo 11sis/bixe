@@ -1,5 +1,757 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "angular-modules": {
+      "projectType": "application",
+      "root": "packages/angular/modules",
+      "sourceRoot": "packages/angular/modules/src",
+      "prefix": "bixe",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/angular/modules",
+            "index": "packages/angular/modules/src/index.html",
+            "main": "packages/angular/modules/src/main.ts",
+            "polyfills": "packages/angular/modules/src/polyfills.ts",
+            "tsConfig": "packages/angular/modules/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "packages/angular/modules/src/favicon.ico",
+              "packages/angular/modules/src/assets"
+            ],
+            "styles": [
+              "packages/angular/modules/src/styles.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "packages/angular/modules/src/environments/environment.ts",
+                  "with": "packages/angular/modules/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-modules:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-modules:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-modules:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/angular/modules/**/*.ts",
+              "packages/angular/modules/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/angular/modules"],
+          "options": {
+            "jestConfig": "packages/angular/modules/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "angular-modules-e2e": {
+      "root": "packages/angular/modules-e2e",
+      "sourceRoot": "packages/angular/modules-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/angular/modules-e2e/cypress.config.ts",
+            "devServerTarget": "angular-modules:serve:development",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-modules:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/angular/modules-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["angular-modules"]
+    },
+    "angular-standalone": {
+      "projectType": "application",
+      "root": "packages/angular/standalone",
+      "sourceRoot": "packages/angular/standalone/src",
+      "prefix": "bixe",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/angular/standalone",
+            "index": "packages/angular/standalone/src/index.html",
+            "main": "packages/angular/standalone/src/main.ts",
+            "polyfills": "packages/angular/standalone/src/polyfills.ts",
+            "tsConfig": "packages/angular/standalone/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "packages/angular/standalone/src/favicon.ico",
+              "packages/angular/standalone/src/assets"
+            ],
+            "styles": [
+              "packages/angular/standalone/src/styles.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "packages/angular/standalone/src/environments/environment.ts",
+                  "with": "packages/angular/standalone/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-standalone:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-standalone:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4201
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-standalone:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/angular/standalone/**/*.ts",
+              "packages/angular/standalone/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/angular/standalone"],
+          "options": {
+            "jestConfig": "packages/angular/standalone/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "angular-standalone-e2e": {
+      "root": "packages/angular/standalone-e2e",
+      "sourceRoot": "packages/angular/standalone-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/angular/standalone-e2e/cypress.config.ts",
+            "devServerTarget": "angular-standalone:serve:development",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-standalone:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/angular/standalone-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["angular-standalone"]
+    },
+    "bixe": {
+      "root": "packages/bixe",
+      "sourceRoot": "packages/bixe/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/js:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/bixe",
+            "main": "packages/bixe/src/index.ts",
+            "tsConfig": "packages/bixe/tsconfig.lib.json",
+            "assets": ["packages/bixe/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/bixe/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/bixe"],
+          "options": {
+            "jestConfig": "packages/bixe/jest.config.ts",
+            "passWithNoTests": true,
+            "codeCoverage": true,
+            "watchAll": true 
+          }
+        }
+      },
+      "tags": []
+    },
+    "react-native": {
+      "root": "packages/react/native",
+      "sourceRoot": "packages/react/native/src",
+      "projectType": "application",
+      "targets": {
+        "start": {
+          "executor": "@nrwl/react-native:start",
+          "options": {
+            "port": 4209
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "nx start react-native"
+          }
+        },
+        "run-ios": {
+          "executor": "@nrwl/react-native:run-ios",
+          "options": {}
+        },
+        "bundle-ios": {
+          "executor": "@nrwl/react-native:bundle",
+          "outputs": ["packages/react/native/build"],
+          "options": {
+            "entryFile": "src/main.tsx",
+            "platform": "ios",
+            "bundleOutput": "dist/packages/react/native/ios/main.jsbundle"
+          }
+        },
+        "run-android": {
+          "executor": "@nrwl/react-native:run-android",
+          "options": {}
+        },
+        "build-android": {
+          "executor": "@nrwl/react-native:build-android",
+          "outputs": [
+            "packages/react/native/android/app/build/outputs/bundle",
+            "packages/react/native/android/app/build/outputs/apk"
+          ],
+          "options": {}
+        },
+        "bundle-android": {
+          "executor": "@nrwl/react-native:bundle",
+          "options": {
+            "entryFile": "src/main.tsx",
+            "platform": "android",
+            "bundleOutput": "dist/packages/react/native/android/main.jsbundle"
+          }
+        },
+        "sync-deps": {
+          "executor": "@nrwl/react-native:sync-deps",
+          "options": {}
+        },
+        "ensure-symlink": {
+          "executor": "@nrwl/react-native:ensure-symlink",
+          "options": {}
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/react/native/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/react/native"],
+          "options": {
+            "jestConfig": "packages/react/native/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "react-native-e2e": {
+      "root": "packages/react/native-e2e",
+      "sourceRoot": "packages/react/native-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "build-ios": {
+          "executor": "@nrwl/detox:build",
+          "options": {
+            "detoxConfiguration": "ios.sim.debug"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "ios.sim.release"
+            }
+          }
+        },
+        "test-ios": {
+          "executor": "@nrwl/detox:test",
+          "options": {
+            "detoxConfiguration": "ios.sim.debug",
+            "buildTarget": "react-native-e2e:build-ios"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "ios.sim.release",
+              "buildTarget": "react-native-e2e:build-ios:production"
+            }
+          }
+        },
+        "build-android": {
+          "executor": "@nrwl/detox:build",
+          "options": {
+            "detoxConfiguration": "android.sim.debug"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "android.sim.release"
+            }
+          }
+        },
+        "test-android": {
+          "executor": "@nrwl/detox:test",
+          "options": {
+            "detoxConfiguration": "android.sim.debug",
+            "buildTarget": "react-native-e2e:build-ios"
+          },
+          "configurations": {
+            "production": {
+              "detoxConfiguration": "android.sim.release",
+              "buildTarget": "react-native-e2e:build-ios:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "packages/react/native-e2e/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["react-native"]
+    },
+    "react-spa": {
+      "root": "packages/react/spa",
+      "sourceRoot": "packages/react/spa/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "compiler": "babel",
+            "outputPath": "dist/packages/react/spa",
+            "index": "packages/react/spa/src/index.html",
+            "baseHref": "/",
+            "main": "packages/react/spa/src/main.tsx",
+            "polyfills": "packages/react/spa/src/polyfills.ts",
+            "tsConfig": "packages/react/spa/tsconfig.app.json",
+            "assets": [
+              "packages/react/spa/src/favicon.ico",
+              "packages/react/spa/src/assets"
+            ],
+            "styles": ["packages/react/spa/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true
+            },
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "packages/react/spa/src/environments/environment.ts",
+                  "with": "packages/react/spa/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "defaultConfiguration": "development",
+          "options": {
+            "buildTarget": "react-spa:build",
+            "hmr": true,
+            "port": 4202
+          },
+          "configurations": {
+            "development": {
+              "buildTarget": "react-spa:build:development"
+            },
+            "production": {
+              "buildTarget": "react-spa:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/react/spa/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/react/spa"],
+          "options": {
+            "jestConfig": "packages/react/spa/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "react-spa-e2e": {
+      "root": "packages/react/spa-e2e",
+      "sourceRoot": "packages/react/spa-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/react/spa-e2e/cypress.config.ts",
+            "devServerTarget": "react-spa:serve:development",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "react-spa:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/react/spa-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["react-spa"]
+    },
+    "shared-store": {
+      "root": "packages/shared-store",
+      "sourceRoot": "packages/shared-store/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/js:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/shared-store",
+            "main": "packages/shared-store/src/index.ts",
+            "tsConfig": "packages/shared-store/tsconfig.lib.json",
+            "assets": ["packages/shared-store/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/shared-store/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/shared-store"],
+          "options": {
+            "jestConfig": "packages/shared-store/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "vue-three-oh": {
+      "root": "packages/vue/three-oh",
+      "projectType": "application",
+      "sourceRoot": "packages/vue/three-oh/src",
+      "targets": {
+        "build": {
+          "executor": "@nx-plus/vue:browser",
+          "options": {
+            "dest": "dist/packages/vue/three-oh",
+            "index": "packages/vue/three-oh/public/index.html",
+            "main": "packages/vue/three-oh/src/main.ts",
+            "tsConfig": "packages/vue/three-oh/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "filenameHashing": true,
+              "productionSourceMap": true,
+              "css": {
+                "extract": true,
+                "sourceMap": false
+              }
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nx-plus/vue:dev-server",
+          "options": {
+            "browserTarget": "vue-three-oh:build",
+            "port": 4203
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "vue-three-oh:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/vue/three-oh/**/*.{ts,tsx,vue}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/vue/three-oh"],
+          "options": {
+            "jestConfig": "packages/vue/three-oh/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "vue-three-oh-e2e": {
+      "root": "packages/vue/three-oh-e2e",
+      "sourceRoot": "packages/vue/three-oh-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/vue/three-oh-e2e/cypress.config.ts",
+            "devServerTarget": "vue-three-oh:serve",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "vue-three-oh:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/vue/three-oh-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["vue-three-oh"]
+    },
+    "vue-two-seven": {
+      "root": "packages/vue/two-seven",
+      "projectType": "application",
+      "sourceRoot": "packages/vue/two-seven/src",
+      "targets": {
+        "build": {
+          "executor": "@nx-plus/vue:browser",
+          "options": {
+            "dest": "dist/packages/vue/two-seven",
+            "index": "packages/vue/two-seven/public/index.html",
+            "main": "packages/vue/two-seven/src/main.ts",
+            "tsConfig": "packages/vue/two-seven/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "mode": "production",
+              "filenameHashing": true,
+              "productionSourceMap": true,
+              "css": {
+                "extract": true,
+                "sourceMap": false
+              }
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nx-plus/vue:dev-server",
+          "options": {
+            "browserTarget": "vue-two-seven:build",
+            "port": 4204
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "vue-two-seven:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/vue/two-seven/**/*.{ts,tsx,vue}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/vue/two-seven"],
+          "options": {
+            "jestConfig": "packages/vue/two-seven/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "vue-two-seven-e2e": {
+      "root": "packages/vue/two-seven-e2e",
+      "sourceRoot": "packages/vue/two-seven-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/vue/two-seven-e2e/cypress.config.ts",
+            "devServerTarget": "vue-two-seven:serve",
+            "testingType": "e2e"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "vue-two-seven:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/vue/two-seven-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["vue-two-seven"]
+    }
+  }
 }

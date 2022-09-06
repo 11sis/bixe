@@ -1,0 +1,25 @@
+<p-splitter class="state-slider">
+
+  <ng-template pTemplate>
+    <div class="state-display">
+      <div class="state-display--header">
+        <h3>Todos State</h3>
+      </div>
+      <div class="state-display--body">
+        <pre>{{state | json}}</pre>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate>
+    <div class="state-display">
+      <div class="root-state-display--body">
+        <div class="root-state-display--header">
+          <h3>Root State</h3>
+        </div>
+        <div class="root-state-display--body">
+          <pre>{{rootState | json}}</pre>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-splitter>

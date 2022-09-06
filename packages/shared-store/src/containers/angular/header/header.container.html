@@ -1,0 +1,39 @@
+<div class="header">
+
+  <div class="blue">
+
+    <div class="logo">
+      <a href="/">
+        <img src="assets/images/bixe.png" alt="logo"/>
+      </a>
+    </div>
+
+    <div class="links-logo">
+      <img src="assets/images/angular.png" /> 
+    </div>
+
+    <div class="links-blue">
+      <a [routerLink]="link.path" *ngFor="let link of links.slice(0,3)" routerLinkActive="active-link">{{link.name}}</a>
+    </div>
+
+  </div>
+
+  <div class="green">
+    <div class="links-logo">
+      <img src="assets/images/react.png" /> 
+    </div>
+    <div class="links-green">
+      <a [routerLink]="link.path" *ngFor="let link of links.slice(3, 6)" routerLinkActive="active-link">{{link.name}}</a>
+    </div>
+  </div>
+
+  <div class="yellow">
+    <div class="links-logo">
+      <img src="assets/images/vue.png" /> 
+    </div>
+    <div class="links-yellow">
+      <a [routerLink]="link.path" *ngFor="let link of links.slice(6, 9)" routerLinkActive="active-link">{{link.name}}</a>
+    </div>
+  </div>
+
+</div>

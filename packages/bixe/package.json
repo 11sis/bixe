@@ -1,0 +1,8 @@
+{
+  "name": "@bixe/bixe",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc --listFiles && npm run minify"
+  }
+}

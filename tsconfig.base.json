@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "noImplicitAny": false,
+    "paths": {
+      "@bixe/bixe": ["packages/bixe/src/index.ts"],
+      "@bixe/shared-store": ["packages/shared-store/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

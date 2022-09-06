@@ -1,0 +1,14 @@
+<div class="todos-container" *ngIf="state.list.length">
+  <bixe-todos-title [state]="state"></bixe-todos-title>
+  <div *ngFor="let todo of state.list" class="list">
+    <div class="list-item {{todo.status}}">
+      <label [for]="todo.id">{{todo.name}}</label>
+      <div class="button" (click)="updateTodo(todo)">
+        {{todo.status === "complete" ? "undo" : "complete"}}
+      </div>
+      <div class="button" (click)="removeTodo(todo)">
+        remove
+      </div>
+    </div>
+  </div>
+</div>

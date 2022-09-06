@@ -1,0 +1,23 @@
+<form #todoForm="ngForm" (ngSubmit)="submit($event)">
+  <div>
+    <span class="p-float-label p-float-inline">
+      <input
+        id="float-input"
+        type="text"
+        pInputText
+        [ngModelOptions]="{standalone: true}"
+        [ngModel]="state.currentTodo"
+        (ngModelChange)="textChange($event)"
+      > 
+      <label for="float-input">Create Todo [{{ scope }} scope]</label>
+    </span>
+    <button pButton pRipple type="submit" label="Add TODO" class="p-button-outlined" [disabled]="!state.currentTodo"></button>
+    <bixe-delay-action
+      [currentTodo]="state.currentTodo"
+      (currentTodoChange)="delayChange($event)"
+    ></bixe-delay-action>
+    <div class="delay-count" *ngIf="delayStatus"> <!-- *ngIf="delayCount" -->
+      {{ delayStatus }}
+    </div>
+  </div>
+</form>

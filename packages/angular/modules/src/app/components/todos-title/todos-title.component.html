@@ -1,0 +1,8 @@
+<div *ngIf="state.list.length" class="list-title">
+	<div>
+		<h3>TODOS</h3>
+	</div>
+	<div>
+		{{state.complete}} of {{(state.list || []).length}} TODOs completed
+	</div>
+</div>
